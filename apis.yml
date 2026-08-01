@@ -1,8 +1,28 @@
 aid: shopshops
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/shopshops.png
 name: ShopShops
-description: ShopShops is a company surfaced as a portfolio company of union-square-ventures and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  ShopShops is a livestream commerce marketplace for authenticated pre-owned
+  luxury and designer goods — handbags, jewelry, watches, accessories, and shoes
+  sold through live shopping events and an online store. Buyers shop curated
+  secondhand inventory with authentication (via Entrupy), buy-now-pay-later
+  (Afterpay / Shop Pay), and return assurance (Seel). The storefront runs on
+  Shopify and publishes a live agent-commerce surface: a Universal Commerce
+  Protocol (UCP) merchant profile, an MCP endpoint for agent-driven catalog
+  search and buyer-approved checkout, an OIDC/OAuth2 Customer Account API, and an
+  llms.txt describing how AI shopping agents may transact with the store.
 url: https://raw.githubusercontent.com/api-evangelist/shopshops/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,10 +32,35 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Commerce
+- Ecommerce
+- Marketplace
+- Live Shopping
+- Luxury Resale
+- Agent Commerce
+- Shopify
+apis:
+- name: ShopShops Agent Commerce API (UCP)
+  description: >-
+    The store's Universal Commerce Protocol surface — a live MCP endpoint for
+    agent-driven catalog search, cart, checkout, and fulfillment, gated by an
+    agent profile URI and buyer payment approval, plus read-only storefront JSON.
+  humanURL: https://www.shopshopslive.com/llms.txt
+  baseURL: https://shopshopslogistics.myshopify.com/api/ucp/mcp
+  tags:
+  - Agent Commerce
+  - UCP
+  - MCP
+  properties:
+  - type: MCPServer
+    url: mcp/shopshops-mcp.yml
+  - type: Authentication
+    url: authentication/shopshops-authentication.yml
+  - type: OAuthScopes
+    url: scopes/shopshops-scopes.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -24,3 +69,28 @@ maintainers:
 common:
 - type: Website
   url: https://shopshopslive.com
+- type: Support
+  url: https://www.shopshopslive.com/pages/contact
+- type: PrivacyPolicy
+  url: https://www.shopshopslive.com/policies/privacy-policy
+- type: TermsOfService
+  url: https://www.shopshopslive.com/policies/terms-of-service
+- type: MCPServer
+  url: mcp/shopshops-mcp.yml
+- type: LLMsTxt
+  url: llms/shopshops-llms.txt
+- type: WellKnown
+  url: well-known/shopshops-well-known.yml
+- type: Authentication
+  url: authentication/shopshops-authentication.yml
+- type: OAuthScopes
+  url: scopes/shopshops-scopes.yml
+- type: Conventions
+  url: conventions/shopshops-conventions.yml
+- type: DomainSecurity
+  url: security/shopshops-domain-security.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 7
+  pass: local-v1

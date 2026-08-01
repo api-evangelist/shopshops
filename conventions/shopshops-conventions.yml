@@ -1,0 +1,52 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.shopshopslive.com/llms.txt
+about: >-
+  Cross-cutting conventions for the ShopShops agent-commerce surface (Shopify /
+  Universal Commerce Protocol). Captured from the store's published /llms.txt and
+  /.well-known/ucp profile. No idempotency-key contract is documented, so no
+  Idempotency pointer is emitted.
+authentication:
+  style: OAuth2 / OIDC Customer Account API for authenticated buyer access
+  agent_checkout: >-
+    Checkout requires an agent profile URI and contemporaneous buyer payment
+    approval; read-only catalog browsing needs no auth.
+  see: authentication/shopshops-authentication.yml
+transport:
+  protocol: Universal Commerce Protocol (UCP)
+  mcp_endpoint: https://shopshopslogistics.myshopify.com/api/ucp/mcp
+  method: POST
+  content_type: application/json
+  discovery: GET https://www.shopshopslive.com/.well-known/ucp
+rate_limiting:
+  documented: true
+  signal: HTTP 429
+  guidance: The MCP endpoint is rate-limited per IP; agents must back off on 429 responses.
+buyer_context:
+  parameters:
+  - context.address_country
+  - context.currency
+  purpose: Passed for accurate pricing and availability.
+buyer_approval:
+  invariant: true
+  rule: >-
+    Agents must not complete payment without explicit buyer consent. Without
+    contemporaneous approval, route the purchase through Shop Pay via the Shop
+    skill (https://shop.app/SKILL.md).
+read_only_endpoints:
+  base: https://www.shopshopslive.com
+  endpoints:
+  - GET /collections/all
+  - GET /products/{handle}
+  - GET /products/{handle}.json
+  - GET /collections/{handle}
+  - GET /collections/{handle}/products.json
+  - GET /search?q={query}&type=product
+  - GET /sitemap.xml
+agent_discovery:
+  llms_txt: https://www.shopshopslive.com/llms.txt
+  agents_md: https://www.shopshopslive.com/agents.md
+cross_links:
+  authentication: authentication/shopshops-authentication.yml
+  scopes: scopes/shopshops-scopes.yml
+  mcp: mcp/shopshops-mcp.yml

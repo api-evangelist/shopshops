@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.shopshopslive.com/.well-known/openid-configuration
+schemes:
+- name: CustomerAccountOIDC
+  source: well-known/shopshops-openid-configuration.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://shopify.com/authentication/59001897017/oauth/authorize
+    tokenUrl: https://shopify.com/authentication/59001897017/oauth/token
+scopes:
+- scope: openid
+  description: OpenID Connect authentication; returns an ID token for the buyer.
+  flows: [authorizationCode]
+- scope: email
+  description: Access to the buyer's email address and verification status.
+  flows: [authorizationCode]
+- scope: 'customer-account-api:full'
+  description: Full access to the Shopify Customer Account API for the buyer.
+  flows: [authorizationCode]
+- scope: 'customer-account-mcp-api:full'
+  description: >-
+    Full access to the Customer Account MCP API, enabling agent-driven access to
+    the buyer's account over the Model Context Protocol.
+  flows: [authorizationCode]

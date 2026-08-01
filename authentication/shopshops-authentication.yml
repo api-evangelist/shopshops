@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.shopshopslive.com/.well-known/openid-configuration
+docs: https://www.shopshopslive.com/.well-known/oauth-authorization-server
+summary:
+  types: [oauth2, openIdConnect]
+  oauth2_flows: [authorizationCode]
+  pkce: true
+  note: >-
+    ShopShops (on Shopify) exposes an OIDC/OAuth2 Customer Account API for
+    authenticated buyer access. Agent commerce runs over the UCP MCP endpoint,
+    where checkout requires contemporaneous buyer payment approval.
+schemes:
+- name: CustomerAccountOIDC
+  type: openIdConnect
+  issuer: https://shopify.com/authentication/59001897017
+  authorization_endpoint: https://shopify.com/authentication/59001897017/oauth/authorize
+  token_endpoint: https://shopify.com/authentication/59001897017/oauth/token
+  end_session_endpoint: https://shopify.com/authentication/59001897017/logout
+  jwks_uri: https://shopify.com/authentication/59001897017/.well-known/jwks.json
+  response_types_supported: [code]
+  grant_types_supported:
+  - authorization_code
+  - refresh_token
+  - 'urn:ietf:params:oauth:grant-type:jwt-bearer'
+  token_endpoint_auth_methods_supported: [client_secret_basic]
+  id_token_signing_alg_values_supported: [RS256]
+  code_challenge_methods_supported: [S256]
+  subject_types_supported: [public]
+  claims_supported: [iss, sub, aud, exp, iat, nonce, sid, email, email_verified]
+  sources: [well-known/shopshops-openid-configuration.json]

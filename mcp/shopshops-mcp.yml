@@ -1,0 +1,52 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://www.shopshopslive.com/.well-known/ucp
+docs: https://www.shopshopslive.com/llms.txt
+server:
+  name: shopshops-ucp-shopping
+  protocol: Universal Commerce Protocol (UCP)
+  ucp_version: '2026-04-08'
+  supported_versions: ['2026-04-08', '2026-01-23']
+  transport: http
+  endpoint: https://shopshopslogistics.myshopify.com/api/ucp/mcp
+  content_type: application/json
+  schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+  auth: >-
+    Agent profile URI required; buyer-authorized checkout via Shopify payment
+    handlers (Shop Pay, Google Pay, Shopify card). Read-only browsing needs no auth.
+  rate_limited: true
+  notes: >-
+    Live UCP MCP endpoint. A tools/list call without an agent profile URI returns
+    JSON-RPC error -32001 "UCP discovery failed" (HTTP 422), confirming the server
+    is live and profile-gated. Tool names below are documented in the store's
+    /llms.txt typical-agent-flow and the UCP shopping service schema.
+tools:
+- name: search_catalog
+  description: Search the store catalog for products matching buyer intent.
+  capability: dev.ucp.shopping.catalog.search
+- name: create_cart
+  description: Create a cart and add desired items.
+  capability: dev.ucp.shopping.cart
+- name: create_checkout
+  description: Start the purchase/checkout flow.
+  capability: dev.ucp.shopping.checkout
+- name: update_checkout
+  description: Set shipping address and method on the checkout.
+  capability: dev.ucp.shopping.fulfillment
+- name: complete_checkout
+  description: Finalize the purchase. Requires explicit buyer payment approval.
+  capability: dev.ucp.shopping.checkout
+capabilities:
+- dev.ucp.shopping.catalog.search
+- dev.ucp.shopping.catalog.lookup
+- dev.ucp.shopping.cart
+- dev.ucp.shopping.checkout
+- dev.ucp.shopping.fulfillment
+- dev.ucp.shopping.discount
+- dev.ucp.shopping.order
+- dev.shopify.catalog
+payment_handlers:
+- com.google.pay
+- dev.shopify.card
+- dev.shopify.shop_pay
