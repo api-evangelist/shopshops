@@ -51,7 +51,7 @@ tags:
 - Marketplace
 - Live Shopping
 - Luxury Resale
-- Agent Commerce
+- Agentic Commerce
 - Shopify
 tags_raw:
 - Company
@@ -71,6 +71,10 @@ apis:
   humanURL: https://www.shopshopslive.com/llms.txt
   baseURL: https://shopshopslogistics.myshopify.com/api/ucp/mcp
   tags:
+  - Agentic Commerce
+  - Universal Commerce Protocol
+  - MCP
+  tags_raw:
   - Agent Commerce
   - UCP
   - MCP
