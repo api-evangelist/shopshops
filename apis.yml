@@ -85,6 +85,9 @@ apis:
     url: authentication/shopshops-authentication.yml
   - type: OAuthScopes
     url: scopes/shopshops-scopes.yml
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: ucp
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
