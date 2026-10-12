@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/shopshops/integrations
+- https://n8n.io/integrations/shopshops/
+- https://composio.dev/toolkits/shopshops
+- https://monid.ai/tools/shopshops
+checked:
+- https://composio.dev/toolkits/shopshops
+- https://monid.ai/tools/shopshops
+- https://n8n.io/integrations/shopshops/
+- https://zapier.com/apps/shopshops/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
